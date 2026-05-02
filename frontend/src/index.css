@@ -1,0 +1,86 @@
+@import url('https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800,900&display=swap');
+@import url('@fontsource/ibm-plex-sans/400.css');
+@import url('@fontsource/ibm-plex-sans/500.css');
+@import url('@fontsource/ibm-plex-sans/600.css');
+@import url('@fontsource/ibm-plex-mono/400.css');
+@import url('@fontsource/ibm-plex-mono/500.css');
+@import url('@fontsource/ibm-plex-mono/600.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    margin: 0;
+    font-family: 'IBM Plex Sans', sans-serif;
+    background-color: #F4F4F0;
+    color: #0A0A0A;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.font-display { font-family: 'Cabinet Grotesk', sans-serif; }
+.font-mono { font-family: 'IBM Plex Mono', monospace; }
+.font-body { font-family: 'IBM Plex Sans', sans-serif; }
+
+@layer base {
+    :root {
+        --background: 60 10% 95%;
+        --foreground: 0 0% 4%;
+        --card: 0 0% 100%;
+        --card-foreground: 0 0% 4%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 0 0% 4%;
+        --primary: 0 0% 4%;
+        --primary-foreground: 60 10% 95%;
+        --secondary: 60 8% 90%;
+        --secondary-foreground: 0 0% 4%;
+        --muted: 60 8% 90%;
+        --muted-foreground: 0 0% 30%;
+        --accent: 354 78% 56%;
+        --accent-foreground: 0 0% 100%;
+        --destructive: 354 78% 56%;
+        --destructive-foreground: 0 0% 100%;
+        --border: 0 0% 4%;
+        --input: 0 0% 4%;
+        --ring: 354 78% 56%;
+        --chart-1: 0 0% 4%;
+        --chart-2: 0 0% 30%;
+        --chart-3: 0 0% 50%;
+        --chart-4: 354 78% 56%;
+        --chart-5: 0 0% 70%;
+        --radius: 0;
+    }
+}
+
+@layer base {
+    * { @apply border-border; }
+    body { @apply bg-background text-foreground; }
+    button:focus-visible { outline: 2px solid #E63946; outline-offset: 2px; }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #EAEAE5; }
+::-webkit-scrollbar-thumb { background: #0A0A0A; border: 2px solid #EAEAE5; }
+::-webkit-scrollbar-thumb:hover { background: #E63946; }
+
+/* Selection */
+::selection { background: #E63946; color: #fff; }
+
+/* Border-draw entrance animation for cards */
+@keyframes border-draw {
+    0% { clip-path: inset(0 100% 0 0); opacity: 0; }
+    100% { clip-path: inset(0 0 0 0); opacity: 1; }
+}
+.animate-border-draw { animation: border-draw 0.5s ease-out forwards; }
+
+@keyframes fade-up {
+    0% { opacity: 0; transform: translateY(8px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up { animation: fade-up 0.5s ease-out forwards; }
+
+@layer base {
+    [data-debug-wrapper="true"] { display: contents !important; }
+}
